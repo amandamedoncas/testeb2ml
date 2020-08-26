@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<f:metadata>			
+		<f:viewParam name="id" value="#{alunoBean.aluno}"/>	
+		<f:viewAction action="#{alunoBean.configInicial}" />
+	</f:metadata>
+	
+	<h:head>
+		<title>Cadastrar aluno</title>
+		<h:outputStylesheet library="css" name="estilo.css"/>
+	</h:head>
+	
+	<h:body>
+		<div class="content">
+			<h:form class="form">
+				<h2>Cadastro de Alunos</h2>
+				
+				<div>
+					<p:inputText 
+						placeholder="Matrícula" 
+						id="matricula" 
+						value="#{alunoBean.aluno.matricula}" 
+						required="true" 
+						requiredMessage="Matrícula obrigatória."
+					>
+						<p:keyFilter regEx="/[0-9]/i" />
+					</p:inputText>
+				</div>
+				
+				<div>
+					<p:inputText 
+						placeholder="Nome do aluno"
+						id="nome" 
+						value="#{alunoBean.aluno.nome}" 
+						required="true" 
+						requiredMessage="Nome obrigatório."
+					/>
+				</div>
+				
+				<p:commandButton 
+					value="Cadastrar" 
+					action="#{alunoBean.cadastrar}" 
+					update="@form"
+					class="button"
+				/>	
+				
+				
+				<p:button
+					value="Voltar" 
+					outcome="/Home?faces-redirect=true" 
+					class="button"
+				/>
+		
+				
+			</h:form>
+		</div>
+		<p:growl showDetail="false" autoUpdate="true" showSummary="true"/>
+	</h:body>
+	
+	
+</ui:composition>

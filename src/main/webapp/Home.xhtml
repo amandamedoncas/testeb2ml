@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+		<title>Teste</title>
+		<h:outputStylesheet library="css" name="estilo.css"/>
+	</h:head>
+		
+	<h:body>
+		<div>
+			<div class="container">
+				<h2>Teste B2ML</h2>
+			
+				
+			</div>
+	
+			<div class="content">
+				
+				<p:link 
+					value="Cadastrar Alunos" 
+					outcome="/CadastroAluno?faces-redirect=true" 
+					class="link"
+				/>
+				
+				<p:link 
+					value="Cadastrar Professores" 
+					outcome="/CadastroProfessor?faces-redirect=true" 
+					class="link"
+				/>
+				
+				<p:link 
+					value="Cadastrar Turmas" 
+					outcome="/CadastroTurma?faces-redirect=true" 
+					class="link"
+				/>
+				
+				<p:link 
+					value="Exibir Turmas" 
+					outcome="/Turmas?faces-redirect=true" 
+					class="link"
+				/>
+				
+				
+				
+			</div>
+		</div>
+		
+		
+		<h:outputScript src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></h:outputScript>
+	</h:body>
+	
+	
+</ui:composition>

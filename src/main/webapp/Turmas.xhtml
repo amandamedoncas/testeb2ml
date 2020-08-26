@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<f:metadata>			
+		<f:viewAction action="#{turmaBean.listar}" />
+	</f:metadata>
+
+	<h:head>
+		<title>Turmas Cadastradas</title>
+		<h:outputStylesheet library="css" name="estilo.css"/>
+	</h:head>
+	
+	<h:body>
+		<div class="content">
+			<h2>Lista de Turmas</h2>
+			<h:form class="form">
+					
+				<p:dataTable value="#{turmaBean.turmasList}" var="turma" rendered="true" 
+					border="2" paginator="true" paginatorAlwaysVisible="true" rows="5" paginatorPosition="bottom">
+					
+					<p:column headerText="Código" width="60">
+						<h:outputText value="#{turma.codigo}" />
+					</p:column>
+					
+					<p:column headerText="Sala" width="60">
+						<h:outputText value="#{turma.sala}" />
+					</p:column>
+					
+					<p:column headerText="Data Abertura" width="60">
+						<h:outputText value="#{turma.dataAbertura}" />
+					</p:column>
+					
+					<p:column headerText="Data Encerramento" width="60">
+						<h:outputText value="#{turma.dataEncerramento}" />
+					</p:column>
+					
+					
+					<p:column headerText="Professores" width="60">
+						<h:outputText value="#{turma.professor.nome}" />
+					</p:column>
+					
+					<p:column headerText="Ações" width="35">
+						<p:commandButton title="Excluir" value="Excluir"
+							action="#{turmaBean.deletar}" update="@form"
+							class="buttonList">
+							<f:setPropertyActionListener value="#{turma}"
+								target="#{turmaBean.turma}" />
+						</p:commandButton>
+					</p:column>
+	
+				</p:dataTable>
+							
+				
+				<p:button
+						value="Voltar" 
+						outcome="/Home?faces-redirect=true" 
+						class="button"
+				/>
+			
+			</h:form>
+		</div>
+		<p:growl showDetail="false" autoUpdate="true" showSummary="true" />
+		
+	</h:body>
+	
+	
+</ui:composition>

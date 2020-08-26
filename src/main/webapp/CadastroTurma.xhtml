@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<ui:composition 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<f:metadata>			
+		<f:viewParam name="id" value="#{turmaBean.turma}"/>	
+		<f:viewAction action="#{turmaBean.configInicial}" />
+	</f:metadata>
+	
+	<h:head>
+		<title>Cadastrar turma</title>
+		<h:outputStylesheet library="css" name="estilo.css"/>
+	</h:head>
+	
+	<h:body>
+		<div class="content">	
+			<h:form class="form">
+				<h2>Cadastro de Turmas</h2>
+				
+				<div>
+					<p:inputText 
+						placeholder="Código da sala"
+						id="codigo" 
+						value="#{turmaBean.turma.codigo}" 
+						required="true" 
+						requiredMessage="Código obrigatório."
+					/>
+				</div>
+				
+				
+				<div>
+					<p:inputText 
+						placeholder="Nome da sala"
+						id="sala" 
+						value="#{turmaBean.turma.sala}" 
+						required="true" 
+						requiredMessage="Sala obrigatória."
+					/>
+				</div>
+	
+				<div>
+					<p:calendar 
+						placeholder="Data de abertura"
+						id="dataAbertura" 
+						value="#{turmaBean.turma.dataAbertura}" 
+						pattern="MM/dd/yyyy" 
+						rendered="true" 
+						required="true" 
+						requiredMessage="Data de Abertura obrigatória."
+					/>
+				</div>
+				
+				<div>
+					<p:calendar 
+						placeholder="Data de encerramento"
+						id="dataEncerramento" 
+						value="#{turmaBean.turma.dataEncerramento}" 
+						pattern="MM/dd/yyyy" 
+						rendered="true" 
+						required="true" 
+						requiredMessage="Data de Abertura obrigatória."
+					/>
+				</div>
+				
+	
+				<div>
+					<p:selectOneMenu value="#{turmaBean.alunoSelecionado}">
+						<f:selectItem itemLabel="Selecione os alunos" itemValue=""/>
+						<f:selectItems value="#{turmaBean.alunosSelecionados}"/>
+					</p:selectOneMenu>
+				</div>
+				
+				<div>
+					<p:selectOneMenu value="#{turmaBean.professorSelecionado}" class="selecOne">
+						<f:selectItem itemLabel="Selecione um professor" itemValue=""/>
+						<f:selectItems value="#{turmaBean.professoresSelecionados}"/>
+					</p:selectOneMenu>
+				</div>
+				
+				<p:commandButton 
+					value="Cadastrar" 
+					action="#{turmaBean.cadastrar}" 
+					update="@form"
+					class="button"
+				/>	
+				
+				
+				<p:button
+					value="Voltar" 
+					outcome="/Home?faces-redirect=true" 
+					class="button"
+				/>
+		
+			</h:form>
+		 </div>
+		<p:growl showDetail="false" autoUpdate="true" showSummary="true"/>
+	</h:body>
+	
+	
+</ui:composition>
